@@ -1,0 +1,6 @@
+use_frameworks!
+target 'Omnicrow_Tests' do
+  pod 'Omnicrow', :path => '../'
+  
+  
+end
