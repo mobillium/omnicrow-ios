@@ -1,0 +1,22 @@
+PODS:
+  - Alamofire (4.5.1)
+  - ObjectMapper (2.1.0)
+  - Omnicrow (0.1.0):
+    - Alamofire (~> 4.4)
+    - ObjectMapper (~> 2.1.0)
+
+DEPENDENCIES:
+  - Omnicrow (from `../`)
+
+EXTERNAL SOURCES:
+  Omnicrow:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
+  Omnicrow: ff82d99c7435f17e43fc9563085decc06f5a6759
+
+PODFILE CHECKSUM: fc12a214dc128c15ce229709ab41ddd43cbeecc1
+
+COCOAPODS: 1.3.1
