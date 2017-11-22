@@ -16,34 +16,33 @@ class WebService {
     }
     
     enum Path: String {
-        case item       = "/api/event/item"
-        case category   = "/api/event/category"
-        case cart       = "/api/event/cart"
-        case purchase   = "/api/event/purchase"
-        case beacon     = "/api/event/beacon"
+        case item           = "/api/event/item"
+        case category       = "/api/event/category"
+        case cart           = "/api/event/cart"
+        case purchase       = "/api/event/purchase"
+        case beacon         = "/api/event/beacon"
+        case registerPush   = "/api/device"
     }
     
-    class func request(_ eventName: OmnicrowEventName) {
-        
-        var url = baseUrl
-        
-        var parameters = [String: Any]()
+    class func logEvent(_ eventName: OmnicrowEventName) {
+        var parameters: [String: Any] = [:]
+        var urlPath = WebService.Path.item
         switch eventName {
         case .item(let id):
-            url += Path.item.rawValue
+            urlPath = .item
             parameters["id"] = id
         case .category(let path):
-            url += Path.category.rawValue
+            urlPath = .category
             parameters["path"] = path
         case .cart(let items):
-            url += Path.cart.rawValue
+            urlPath = .cart
             for (index, item) in items.enumerated() {
                 parameters["items[\(index)][id]"] = item.id
                 parameters["items[\(index)][quantity]"] = item.quantity
                 parameters["items[\(index)][price]"] = item.price
             }
         case .purchase(let id, let totalPrice, let items):
-            url += Path.purchase.rawValue
+            urlPath = .purchase
             parameters["id"] = id
             parameters["total"] = totalPrice
             for (index, item) in items.enumerated() {
@@ -52,32 +51,33 @@ class WebService {
                 parameters["items[\(index)][price]"] = item.price
             }
         case .beacon(let major, let minor):
-            url += Path.beacon.rawValue
+            urlPath = .beacon
             parameters["major"] = major
             parameters["minor"] = minor
         }
-        
-//        var header = [String: String]()
-//        header["appId"] = TubitakAnalytics.shared.appId
-        
+        WebService.request(urlPath, parameters: parameters)
+    }
+    
+    class func request(_ path: Path, parameters: [String: Any]) {
         let defaults = UserDefaults.standard
-
+        var params = parameters
         if let userId: String = defaults.string(forKey: "OmnicrowAnalyticsUserId") {
-            parameters["user-id"] = userId
+            params["user-id"] = userId
         }
         
         if let version: String = defaults.string(forKey: "OmnicrowAnalyticsAppVersion") {
-            parameters["version"] = version
+            params["version"] = version
         }
-
-        parameters["uuid"] = OmnicrowAnalytics.shared.uuid
-        parameters["platform"] = "ios"
         
-        print("Path: \(url)")
-        print("Parameters:")
-        print(parameters)
+        params["uuid"] = OmnicrowAnalytics.shared.uuid
+        params["platform"] = "ios"
         
-        Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+        print("URL:")
+        print(baseUrl+path.rawValue)
+        print("params:")
+        print(params)
+        
+        Alamofire.request(baseUrl+path.rawValue, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .validate()
             .responseData(completionHandler: { (response) in
                 if let value = response.result.value {
@@ -90,14 +90,12 @@ class WebService {
                 
                 // Success
                 if response.result.isSuccess {
-                    
-
+                    print("Response Tubitak: Success")
                 }
                 
                 // Failure
                 if response.result.isFailure {
-
-                    
+                    print("Response Tubitak: Success")
                 }
         }
     }

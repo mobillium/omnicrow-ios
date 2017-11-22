@@ -37,7 +37,11 @@ public class OmnicrowAnalytics: NSObject {
     }
     
     public static func logEvent(_ eventName: OmnicrowEventName) {
-        WebService.request(eventName)
+        WebService.logEvent(eventName)
+    }
+    
+    public static func registerPush(_ deviceToken: String) {
+        WebService.request(WebService.Path.registerPush, parameters: ["token": deviceToken])
     }
     
     public func setUserId(_ id: String?) {
