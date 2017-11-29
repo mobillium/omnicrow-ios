@@ -120,6 +120,25 @@ _id", totalPrice: "order_total_price", items: [Omnicrown.Product(id: "product_id
 
 ```
 
+###Beacon
+
+
+In Xcode, secondary-click your project's .plist file and select Open As -> Source Code.
+
+Insert the following XML snippet into the body of your file just before the final </dict> element.
+
+If you want to detect beacons only when your app is running: **NSLocationWhenInUseUsageDescription**
+If you want the app to detect beacons even when it isn't running: **NSLocationAlwaysUsageDescription**
+
+```xml
+<dict>
+	...
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
+```
+
 ## Push
 ###Push Register
 
