@@ -77,7 +77,7 @@ class WebService {
         print("params:")
         print(params)
         
-        Alamofire.request(baseUrl+path.rawValue, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+        Alamofire.request(baseUrl+path.rawValue, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
             .validate()
             .responseData(completionHandler: { (response) in
                 if let value = response.result.value {
