@@ -122,22 +122,23 @@ _id", totalPrice: "order_total_price", items: [Omnicrown.Product(id: "product_id
 
 ###Beacon
 
+You must give location permission for detecting beacons.
 
 In Xcode, secondary-click your project's .plist file and select Open As -> Source Code.
 
 Insert the following XML snippet into the body of your file just before the final </dict> element.
 
-If you want to detect beacons only when your app is running: **NSLocationWhenInUseUsageDescription**
-If you want the app to detect beacons even when it isn't running: **NSLocationAlwaysUsageDescription**
-
 ```xml
 <dict>
 	...
-	<key>NSLocationAlwaysUsageDescription</key>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 ```
+These options must be selected.
+
+![Screenshots](https://github.com/aslanmehmetsalih/omnicrow-ios/blob/master/Screen%20Shot%202017-11-29%20at%2011.08.23%201.png)
 
 ## Push
 ###Push Register
