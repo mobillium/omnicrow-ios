@@ -11,7 +11,7 @@ import Foundation
 public enum OmnicrowEventName {
     case item(id: String)
     case category(path: String)
-    case cart(items: [Product])
-    case purchase(id: String, totalPrice: Double, items: [Product])
+    case cart(items: [OmnicrowProduct])
+    case purchase(id: String, totalPrice: Double, items: [OmnicrowProduct])
     case beacon(major: String, minor: String)
 }

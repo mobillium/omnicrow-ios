@@ -12,7 +12,7 @@ import ObjectMapper
 class WebService {
     
     static var baseUrl: String {
-        return OmnicrowAnalytics.shared.isSandbox ? "https://dev.tubitak.mobillium.com" : "https://tubitak.mobillium.com"
+        return Omnicrow.shared.isSandbox ? "https://dev.tubitak.mobillium.com" : "https://tubitak.mobillium.com"
     }
     
     enum Path: String {
@@ -59,17 +59,15 @@ class WebService {
     }
     
     class func request(_ path: Path, parameters: [String: Any]) {
-        let defaults = UserDefaults.standard
+        let defaults = Omnicrow.shared.userDefaults
         var params = parameters
-        if let userId: String = defaults.string(forKey: "OmnicrowAnalyticsUserId") {
+        if let userId: String = defaults?.string(forKey: "OmnicrowAnalyticsUserId") {
             params["user-id"] = userId
         }
         
-        if let version: String = defaults.string(forKey: "OmnicrowAnalyticsAppVersion") {
-            params["version"] = version
-        }
+        params["version"] = Omnicrow.shared.version
         
-        params["uuid"] = OmnicrowAnalytics.shared.uuid
+        params["uuid"] = Omnicrow.shared.uuid
         params["platform"] = "ios"
         
         print("URL:")

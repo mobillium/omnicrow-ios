@@ -74,11 +74,29 @@ import Omnicrow
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         
-        OmnicrowAnalytics.shared.active()
+        Omnicrow.shared.active()
 
         return true
     }
 
+```
+
+### Login
+
+```swift
+import Omnicrow
+
+	Omnicrow.shared.setUserId("userId")
+	
+```
+
+### LogOut
+
+```swift
+import Omnicrow
+
+	Omnicrow.shared.logOut()
+	
 ```
 
 ## Events
@@ -87,7 +105,7 @@ import Omnicrow
 ```swift
 import Omnicrow
 
-	OmnicrowAnalytics.logEvent(.item(id: "product_id))
+	Omnicrow.logEvent(.item(id: "product_id))
 	
 ```
 
@@ -97,7 +115,7 @@ import Omnicrow
 import Omnicrow
 
 	var contentId = contentId = "Category > \(category.name) > \(sub_category.name) > \("...")"
-	OmnicrowAnalytics.logEvent(.category(path: contentId))
+	Omnicrow.logEvent(.category(path: contentId))
 
 ```
 
@@ -106,7 +124,7 @@ import Omnicrow
 ```swift
 import Omnicrow
 
-	OmnicrowAnalytics.logEvent(.cart(items: [Omnicrow.Product(id: "product_id, quantity: "product_quantity", price: "product_price)]))
+	Omnicrow.logEvent(.cart(items: [OmnicrowProduct(id: "product_id, quantity: "product_quantity", price: "product_price)]))
 
 ```
 
@@ -115,8 +133,8 @@ import Omnicrow
 ```swift
 import Omnicrow
 
-	OmnicrowAnalytics.logEvent(.purchase(id: "order
-_id", totalPrice: "order_total_price", items: [Omnicrow.Product(id: "product_id", quantity: "product_quantity", price: "product_price")]))
+	Omnicrow.logEvent(.purchase(id: "order
+_id", totalPrice: "order_total_price", items: [OmnicrowProduct(id: "product_id", quantity: "product_quantity", price: "product_price")]))
 
 ```
 
@@ -146,7 +164,7 @@ These options must be selected.
 ```swift
 import Omnicrow
 
-	OmnicrowAnalytics.registerPush("pushToken")
+	Omnicrow.registerPush("pushToken")
 
 ```
 

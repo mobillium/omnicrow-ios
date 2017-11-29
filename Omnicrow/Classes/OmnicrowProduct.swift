@@ -1,5 +1,5 @@
 //
-//  Product.swift
+//  OmnicrowProduct.swift
 //  Pods
 //
 //  Created by Mehmet Salih Aslan on 12/09/2017.
@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-public class Product: Mappable {
+public class OmnicrowProduct: Mappable {
     
     var id: String!
     var quantity: Int!

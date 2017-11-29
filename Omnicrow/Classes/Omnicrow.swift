@@ -1,5 +1,5 @@
 //
-//  OmnicrowAnalytics.swift
+//  Omnicrow.swift
 //  Pods
 //
 //  Created by Mehmet Salih Aslan on 12/09/2017.
@@ -10,9 +10,9 @@ import Foundation
 import CoreLocation
 import CoreBluetooth
 
-public class OmnicrowAnalytics: NSObject {
+public class Omnicrow: NSObject {
     
-    public static let shared = OmnicrowAnalytics()
+    public static let shared = Omnicrow()
     
     var beaconRegion: CLBeaconRegion!
     var locationManager: CLLocationManager!
@@ -23,19 +23,24 @@ public class OmnicrowAnalytics: NSObject {
     
     var appId: String!
     var isSandbox = false
+    var userDefaults = UserDefaults(suiteName: "com.mobillium.omnicrow")
     
-    var uuid: String {
-        let defaults = UserDefaults.standard
-        if let uuid = defaults.string(forKey: "OmnicrowAnalyticsUuid") {
+    var uuid: String? {
+        let defaults = Omnicrow.shared.userDefaults
+        if let uuid = defaults?.string(forKey: "OmnicrowAnalyticsUuid") {
             return uuid
         } else {
             let uuid = UUID().uuidString
-            defaults.set(uuid, forKey: "OmnicrowAnalyticsUuid")
-            defaults.synchronize()
+            defaults?.set(uuid, forKey: "OmnicrowAnalyticsUuid")
+            defaults?.synchronize()
             return uuid
         }
     }
     
+    var version: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    }
+
     public static func logEvent(_ eventName: OmnicrowEventName) {
         WebService.logEvent(eventName)
     }
@@ -45,37 +50,31 @@ public class OmnicrowAnalytics: NSObject {
     }
     
     public func setUserId(_ id: String?) {
-        let defaults = UserDefaults.standard
-        defaults.set(id, forKey: "OmnicrowAnalyticsUserId")
-        defaults.synchronize()
-    }
-    
-    public func setVersion(_ version: String?) {
-        let defaults = UserDefaults.standard
-        defaults.set(version, forKey: "OmnicrowAnalyticsAppVersion")
-        defaults.synchronize()
+        let defaults = Omnicrow.shared.userDefaults
+        defaults?.set(id, forKey: "OmnicrowAnalyticsUserId")
+        defaults?.synchronize()
     }
     
     public func logOut() {
-        let defaults = UserDefaults.standard
-        defaults.removeObject(forKey: "OmnicrowAnalyticsUserId")
-        defaults.synchronize()
+        let defaults = Omnicrow.shared.userDefaults
+        defaults?.removeObject(forKey: "OmnicrowAnalyticsUserId")
+        defaults?.synchronize()
     }
     
     public func active() {
         if let appId = Bundle.main.object(forInfoDictionaryKey: "OmnicrowAppID") as? String {
-            OmnicrowAnalytics.shared.appId = appId
+            Omnicrow.shared.appId = appId
         } else {
             fatalError("PaparaAppId should be set.")
         }
         
         if let isSandbox = Bundle.main.object(forInfoDictionaryKey: "OmnicrowSandbox") as? Bool, isSandbox {
-            OmnicrowAnalytics.shared.isSandbox = isSandbox
+            Omnicrow.shared.isSandbox = isSandbox
         } else {
             // Nothing sandbox optional
         }
         
-        if OmnicrowAnalytics.shared.isSandbox {
+        if Omnicrow.shared.isSandbox {
             beaconRegion = CLBeaconRegion(proximityUUID: UUID(uuidString: beaconUUID)!, identifier: beaconId)
             
             locationManager = CLLocationManager()
@@ -87,13 +86,13 @@ public class OmnicrowAnalytics: NSObject {
     
 }
 
-extension OmnicrowAnalytics: CLLocationManagerDelegate {
+extension Omnicrow: CLLocationManagerDelegate {
     
     public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if let enteredRegion = region as? CLBeaconRegion {
             if lastRegion?.major != enteredRegion.major || lastRegion?.minor != enteredRegion.minor {
                 self.lastRegion = enteredRegion
-                OmnicrowAnalytics.logEvent(OmnicrowEventName.beacon(major: String(describing: enteredRegion.major), minor: String(describing: enteredRegion.minor)))
+                Omnicrow.logEvent(OmnicrowEventName.beacon(major: String(describing: enteredRegion.major), minor: String(describing: enteredRegion.minor)))
             }
         }
     }
@@ -102,7 +101,7 @@ extension OmnicrowAnalytics: CLLocationManagerDelegate {
         if let beacon = beacons.first {
             if lastBeacon?.major != beacon.major || lastBeacon?.minor != beacon.minor {
                 self.lastBeacon = beacon
-                OmnicrowAnalytics.logEvent(OmnicrowEventName.beacon(major: String(describing: beacon.major), minor: String(describing: beacon.minor)))
+                Omnicrow.logEvent(OmnicrowEventName.beacon(major: String(describing: beacon.major), minor: String(describing: beacon.minor)))
             }
         }
     }
