@@ -138,7 +138,7 @@ Insert the following XML snippet into the body of your file just before the fina
 ```
 These options must be selected.
 
-![Screenshots](https://github.com/aslanmehmetsalih/omnicrow-ios/blob/master/Screen%20Shot%202017-11-29%20at%2011.08.23%201.png)
+![Screenshots](https://github.com/mobillium/omnicrow-ios/blob/master/capabilities.png)
 
 ## Push
 ### Push Register
