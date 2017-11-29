@@ -82,7 +82,7 @@ import Omnicrown
 ```
 
 ## Events
-###Product Views
+### Product Views
 
 ```swift
 import Omnicrown
@@ -91,7 +91,7 @@ import Omnicrown
 	
 ```
 
-###Category Views
+### Category Views
 
 ```swift
 import Omnicrown
@@ -101,7 +101,7 @@ import Omnicrown
 
 ```
 
-###Add to Cart Events
+### Add to Cart Events
 
 ```swift
 import Omnicrown
@@ -110,7 +110,7 @@ import Omnicrown
 
 ```
 
-###Purchase Events
+### Purchase Events
 
 ```swift
 import Omnicrown
@@ -120,7 +120,7 @@ _id", totalPrice: "order_total_price", items: [Omnicrown.Product(id: "product_id
 
 ```
 
-###Beacon
+### Beacon
 
 You must give location permission for detecting beacons.
 
@@ -141,7 +141,7 @@ These options must be selected.
 ![Screenshots](https://github.com/aslanmehmetsalih/omnicrow-ios/blob/master/Screen%20Shot%202017-11-29%20at%2011.08.23%201.png)
 
 ## Push
-###Push Register
+### Push Register
 
 ```swift
 import Omnicrown
