@@ -26,10 +26,10 @@ $ gem install cocoapods
 
 ### Swift 3
 
-To integrate Omnicrown into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate Omnicrow into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'Omnicrown', '~> 1.0'
+pod 'Omnicrow', '~> 1.0'
 ```
 
 Then, run the following command:
@@ -46,8 +46,8 @@ You need to get app id for your application [Mobillium](http://www.mobillium.com
 ### Configuration
 
 
-* **OmnicrownAppID** Will be provided by [Mobillium](http://www.mobillium.com)
-* **OmnicrownSandbox** true if you want to test in sandbox environment
+* **OmnicrowAppID** Will be provided by [Mobillium](http://www.mobillium.com)
+* **OmnicrowSandbox** true if you want to test in sandbox environment
 
 
 In Xcode, secondary-click your project's .plist file and select Open As -> Source Code.
@@ -59,9 +59,9 @@ If you already have same keys you need to merge them
 ```xml
 <dict>
 	...
-	<key>OmnicrownAppID</key>
+	<key>OmnicrowAppID</key>
 	<string>exm123456</string>
-	<key>OmnicrownSandbox</key>
+	<key>OmnicrowSandbox</key>
 	<true/>
 ```
 
@@ -70,11 +70,11 @@ If you already have same keys you need to merge them
 ```swift
 AppDelegate.swift
 
-import Omnicrown
+import Omnicrow
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         
-        OmnicrownAnalytics.shared.active()
+        OmnicrowAnalytics.shared.active()
 
         return true
     }
@@ -85,38 +85,38 @@ import Omnicrown
 ### Product Views
 
 ```swift
-import Omnicrown
+import Omnicrow
 
-	OmnicrownAnalytics.logEvent(.item(id: "product_id))
+	OmnicrowAnalytics.logEvent(.item(id: "product_id))
 	
 ```
 
 ### Category Views
 
 ```swift
-import Omnicrown
+import Omnicrow
 
 	var contentId = contentId = "Category > \(category.name) > \(sub_category.name) > \("...")"
-	OmnicrownAnalytics.logEvent(.category(path: contentId))
+	OmnicrowAnalytics.logEvent(.category(path: contentId))
 
 ```
 
 ### Add to Cart Events
 
 ```swift
-import Omnicrown
+import Omnicrow
 
-	OmnicrownAnalytics.logEvent(.cart(items: [Omnicrown.Product(id: "product_id, quantity: "product_quantity", price: "product_price)]))
+	OmnicrowAnalytics.logEvent(.cart(items: [Omnicrow.Product(id: "product_id, quantity: "product_quantity", price: "product_price)]))
 
 ```
 
 ### Purchase Events
 
 ```swift
-import Omnicrown
+import Omnicrow
 
-	OmnicrownAnalytics.logEvent(.purchase(id: "order
-_id", totalPrice: "order_total_price", items: [Omnicrown.Product(id: "product_id", quantity: "product_quantity", price: "product_price")]))
+	OmnicrowAnalytics.logEvent(.purchase(id: "order
+_id", totalPrice: "order_total_price", items: [Omnicrow.Product(id: "product_id", quantity: "product_quantity", price: "product_price")]))
 
 ```
 
@@ -144,7 +144,7 @@ These options must be selected.
 ### Push Register
 
 ```swift
-import Omnicrown
+import Omnicrow
 
 	OmnicrowAnalytics.registerPush("pushToken")
 
