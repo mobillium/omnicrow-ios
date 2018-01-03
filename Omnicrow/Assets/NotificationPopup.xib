@@ -11,17 +11,12 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="FF_DIN_Pro_Regular.otf">
-            <string>DINPro-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationPopup" customModule="Alamofire">
             <connections>
                 <outlet property="CompletionButton" destination="JYD-Qn-1P0" id="hOo-Cz-f2J"/>
-                <outlet property="descriptionLabel" destination="ijP-d4-wyb" id="bad-Yp-43k"/>
-                <outlet property="popUpImage" destination="eOH-1c-zpu" id="UR0-QU-cXh"/>
+                <outlet property="descriptionLabel" destination="uID-8Q-tx0" id="zmG-Gy-nLp"/>
+                <outlet property="popUpImage" destination="ClI-Gn-KaQ" id="D1u-hH-DYd"/>
                 <outlet property="titleLabel" destination="c0Y-qz-Ry3" id="yPc-m7-AII"/>
                 <outlet property="view" destination="0Mo-qL-UYk" id="qib-4e-gEm"/>
             </connections>
@@ -34,32 +29,27 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOE-1Z-zeq">
                     <rect key="frame" x="10" y="147.5" width="355" height="372"/>
                     <subviews>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWo-Vj-DnS">
+                        <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PWo-Vj-DnS">
                             <rect key="frame" x="0.0" y="47" width="355" height="275"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eOH-1c-zpu">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ClI-Gn-KaQ">
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="355"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="eOH-1c-zpu" secondAttribute="height" multiplier="1:1" placeholder="YES" id="EyB-39-Yjo"/>
+                                        <constraint firstAttribute="width" secondItem="ClI-Gn-KaQ" secondAttribute="height" multiplier="1:1" id="OM3-G3-SxG"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijP-d4-wyb">
-                                    <rect key="frame" x="20" y="365" width="315" height="19"/>
-                                    <fontDescription key="fontDescription" name="DINPro-Regular" family="DINPro" pointSize="16"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uID-8Q-tx0">
+                                    <rect key="frame" x="156.5" y="365" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="ijP-d4-wyb" firstAttribute="leading" secondItem="PWo-Vj-DnS" secondAttribute="leading" constant="20" id="4Ex-3H-4Ie"/>
-                                <constraint firstItem="eOH-1c-zpu" firstAttribute="top" secondItem="PWo-Vj-DnS" secondAttribute="top" id="BQ5-dy-zDa"/>
-                                <constraint firstAttribute="trailing" secondItem="eOH-1c-zpu" secondAttribute="trailing" id="Dye-rf-LPj"/>
-                                <constraint firstAttribute="height" constant="275" id="K62-g4-50G"/>
-                                <constraint firstItem="eOH-1c-zpu" firstAttribute="leading" secondItem="PWo-Vj-DnS" secondAttribute="leading" id="Mvr-uj-9hO"/>
-                                <constraint firstAttribute="bottom" secondItem="ijP-d4-wyb" secondAttribute="bottom" id="SjA-ZF-GO4"/>
-                                <constraint firstItem="ijP-d4-wyb" firstAttribute="top" secondItem="eOH-1c-zpu" secondAttribute="bottom" constant="10" id="glP-94-PC9"/>
-                                <constraint firstItem="eOH-1c-zpu" firstAttribute="centerX" secondItem="PWo-Vj-DnS" secondAttribute="centerX" id="hcr-KP-WZs"/>
-                                <constraint firstAttribute="trailing" secondItem="ijP-d4-wyb" secondAttribute="trailing" constant="20" id="w62-wb-TE1"/>
+                                <constraint firstAttribute="height" constant="275" id="AvO-je-d1y"/>
+                                <constraint firstItem="ClI-Gn-KaQ" firstAttribute="top" secondItem="PWo-Vj-DnS" secondAttribute="top" id="Sef-Yf-NGY"/>
+                                <constraint firstItem="uID-8Q-tx0" firstAttribute="top" secondItem="ClI-Gn-KaQ" secondAttribute="bottom" constant="10" id="Zit-rc-pyo"/>
+                                <constraint firstAttribute="bottom" secondItem="uID-8Q-tx0" secondAttribute="bottom" id="lF2-wn-WV3"/>
                             </constraints>
                         </scrollView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gD-Fi-pvK">
@@ -109,12 +99,15 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ClI-Gn-KaQ" secondAttribute="trailing" id="8gC-pl-5d9"/>
                         <constraint firstItem="b79-Il-496" firstAttribute="top" secondItem="c0Y-qz-Ry3" secondAttribute="bottom" constant="1" id="8yO-xY-pYd"/>
+                        <constraint firstItem="uID-8Q-tx0" firstAttribute="centerX" secondItem="EOE-1Z-zeq" secondAttribute="centerX" id="9YU-uU-tsu"/>
                         <constraint firstAttribute="trailing" secondItem="c0Y-qz-Ry3" secondAttribute="trailing" id="CV5-lc-4IV"/>
                         <constraint firstItem="JYD-Qn-1P0" firstAttribute="width" secondItem="EOE-1Z-zeq" secondAttribute="width" multiplier="0.5" id="HDk-ig-8Ii"/>
                         <constraint firstItem="PWo-Vj-DnS" firstAttribute="top" secondItem="b79-Il-496" secondAttribute="bottom" id="MJz-97-NBC"/>
                         <constraint firstItem="3gD-Fi-pvK" firstAttribute="leading" secondItem="EOE-1Z-zeq" secondAttribute="leading" id="Ruh-42-UmR"/>
                         <constraint firstItem="c0Y-qz-Ry3" firstAttribute="leading" secondItem="EOE-1Z-zeq" secondAttribute="leading" id="T6O-L7-re5"/>
+                        <constraint firstItem="ClI-Gn-KaQ" firstAttribute="leading" secondItem="EOE-1Z-zeq" secondAttribute="leading" id="Z7d-Px-WCT"/>
                         <constraint firstItem="b79-Il-496" firstAttribute="leading" secondItem="EOE-1Z-zeq" secondAttribute="leading" id="Zfu-cX-cqb"/>
                         <constraint firstItem="3gD-Fi-pvK" firstAttribute="width" secondItem="EOE-1Z-zeq" secondAttribute="width" multiplier="0.5" id="cYy-fn-EI7"/>
                         <constraint firstAttribute="trailing" secondItem="b79-Il-496" secondAttribute="trailing" id="e3d-mR-Md9"/>

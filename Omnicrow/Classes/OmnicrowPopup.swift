@@ -13,6 +13,7 @@ class OmnicrowPopup: Mappable {
     var content: String!
     var uri: String!
     var button: String!
+    var image: String!
     
     required init?(map: Map) {}
     
@@ -21,6 +22,7 @@ class OmnicrowPopup: Mappable {
         content               <- map["content"]
         uri                   <- map["uri"]
         button                <- map["button"]
+        image                 <- map["image"]
     }
     
 }

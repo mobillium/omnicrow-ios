@@ -24,9 +24,8 @@ public class NotificationPopup: UIViewController {
         self.titleLabel.text = self.omnicrowPopup.title
         self.descriptionLabel.text = self.omnicrowPopup.content
         self.CompletionButton.setTitle(self.omnicrowPopup.button, for: UIControlState())
-        let url = URL(string: "http://is3.mzstatic.com/image/thumb/Purple128/v4/27/27/26/2727268c-f825-a2e9-76c7-0e9206080a87/source/1200x630bb.jpg")
+        let url = URL(string: omnicrowPopup.image!)
         popUpImage.kf.setImage(with: url)
-        
     }
     
     convenience init(_ omnicrowPopup: OmnicrowPopup){
