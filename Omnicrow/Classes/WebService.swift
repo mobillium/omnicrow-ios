@@ -9,10 +9,11 @@
 import Alamofire
 import ObjectMapper
 
+
 class WebService {
     
     static var baseUrl: String {
-        return Omnicrow.shared.isSandbox ? "https://dev.tubitak.mobillium.com" : "https://tubitak.mobillium.com"
+        return Omnicrow.shared.isSandbox ? Omnicrow.shared.baseUrlForSandbox : Omnicrow.shared.baseUrl
     }
     
     enum Path: String {
@@ -22,7 +23,9 @@ class WebService {
         case purchase       = "/api/event/purchase"
         case beacon         = "/api/event/beacon"
         case registerPush   = "/api/device"
+        case popup          = "/api/popup"
     }
+    
     
     class func logEvent(_ eventName: OmnicrowEventName) {
         var parameters: [String: Any] = [:]
@@ -94,6 +97,51 @@ class WebService {
                 // Failure
                 if response.result.isFailure {
                     print("Response Tubitak: Success")
+                }
+        }
+    }
+    
+    class func requestForPupup <T: Mappable>(_ path: Path, parameters: [String: Any], success: @escaping (T) -> Void) {
+        let defaults = Omnicrow.shared.userDefaults
+        var params = parameters
+        if let userId: String = defaults?.string(forKey: "OmnicrowAnalyticsUserId") {
+            params["user-id"] = userId
+        }
+        
+        params["version"] = Omnicrow.shared.version
+        
+        params["uuid"] = Omnicrow.shared.uuid
+        
+        print("URL:")
+        print(baseUrl+path.rawValue)
+        print("params:")
+        print(params)
+        
+        Alamofire.request(baseUrl+path.rawValue, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil)
+            .validate()
+            .responseData(completionHandler: { (response) in
+                if let value = response.result.value {
+                    if let json = String(data: value, encoding: .utf8) {
+                        print("\nResponse Tubitak JSON: \(json)")
+                    }
+                }
+            })
+            .responseJSON { response in
+                
+                // Success
+                if response.result.isSuccess {
+                    print("Response Tubitak: Success")
+                    if let object = Mapper<T>().map(JSON: response.result.value as! [String: Any]) {
+                        success(object)
+                        return
+                    }
+                }
+                
+                // Failure
+                if response.result.isFailure {
+                    print("Response Tubitak: Success")
+                    print(response)
+                    
                 }
         }
     }

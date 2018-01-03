@@ -58,11 +58,11 @@ If you already have same keys you need to merge them
 
 ```xml
 <dict>
-	...
-	<key>OmnicrowAppID</key>
-	<string>exm123456</string>
-	<key>OmnicrowSandbox</key>
-	<true/>
+...
+<key>OmnicrowAppID</key>
+<string>exm123456</string>
+<key>OmnicrowSandbox</key>
+<true/>
 ```
 
 ### Initialize
@@ -72,12 +72,12 @@ AppDelegate.swift
 
 import Omnicrow
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        
-        Omnicrow.shared.active()
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
 
-        return true
-    }
+Omnicrow.shared.active("Base_Url","Base_Url_For_Sandbox")
+
+return true
+}
 
 ```
 
@@ -86,8 +86,8 @@ import Omnicrow
 ```swift
 import Omnicrow
 
-	Omnicrow.shared.setUserId("userId")
-	
+Omnicrow.shared.setUserId("userId")
+
 ```
 
 ### LogOut
@@ -95,8 +95,8 @@ import Omnicrow
 ```swift
 import Omnicrow
 
-	Omnicrow.shared.logOut()
-	
+Omnicrow.shared.logOut()
+
 ```
 
 ## Events
@@ -105,17 +105,27 @@ import Omnicrow
 ```swift
 import Omnicrow
 
-	Omnicrow.logEvent(.item(id: "product_id))
-	
+Omnicrow.logEvent(.item(id: "product_id))
+
 ```
+
+### Show Pop-up
+
+```swift
+import Omnicrow
+
+Omnicrow.showPopUp(self)
+
+```
+
 
 ### Category Views
 
 ```swift
 import Omnicrow
 
-	var contentId = contentId = "Category > \(category.name) > \(sub_category.name) > \("...")"
-	Omnicrow.logEvent(.category(path: contentId))
+var contentId = contentId = "Category > \(category.name) > \(sub_category.name) > \("...")"
+Omnicrow.logEvent(.category(path: contentId))
 
 ```
 
@@ -124,7 +134,7 @@ import Omnicrow
 ```swift
 import Omnicrow
 
-	Omnicrow.logEvent(.cart(items: [OmnicrowProduct(id: "product_id, quantity: "product_quantity", price: "product_price)]))
+Omnicrow.logEvent(.cart(items: [OmnicrowProduct(id: "product_id, quantity: "product_quantity", price: "product_price)]))
 
 ```
 
@@ -133,7 +143,7 @@ import Omnicrow
 ```swift
 import Omnicrow
 
-	Omnicrow.logEvent(.purchase(id: "order
+Omnicrow.logEvent(.purchase(id: "order
 _id", totalPrice: "order_total_price", items: [OmnicrowProduct(id: "product_id", quantity: "product_quantity", price: "product_price")]))
 
 ```
@@ -148,11 +158,11 @@ Insert the following XML snippet into the body of your file just before the fina
 
 ```xml
 <dict>
-	...
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+...
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string></string>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string></string>
 ```
 These options must be selected.
 
@@ -164,10 +174,11 @@ These options must be selected.
 ```swift
 import Omnicrow
 
-	Omnicrow.registerPush("pushToken")
+Omnicrow.registerPush("pushToken")
 
 ```
 
 ## License
 
 Omnicrow is available under the MIT license. See the LICENSE file for more info.
+

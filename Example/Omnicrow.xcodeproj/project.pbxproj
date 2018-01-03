@@ -12,12 +12,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		08E60212248013A29B2ABA49 /* Omnicrow.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = Omnicrow.podspec; path = ../Omnicrow.podspec; sourceTree = "<group>"; };
-		2590DF6A7CFF0FDF22394D9B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		08E60212248013A29B2ABA49 /* Omnicrow.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Omnicrow.podspec; path = ../Omnicrow.podspec; sourceTree = "<group>"; };
+		2590DF6A7CFF0FDF22394D9B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Omnicrow_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Omnicrow_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		6DC199AF3F6FBEC77AD80179 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		6DC199AF3F6FBEC77AD80179 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		75DD7C35637FFB0DBF751265 /* Pods_Omnicrow_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Omnicrow_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FD037FBDDCAC7E009821F30 /* Pods-Omnicrow_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omnicrow_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Omnicrow_Tests/Pods-Omnicrow_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C4BCD148D2C189E60628E0D5 /* Pods-Omnicrow_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Omnicrow_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Omnicrow_Tests/Pods-Omnicrow_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -131,12 +131,9 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
-					607FACCF1AFB9204008FA782 = {
-						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
-					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 4PWC9KX3UT;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -212,12 +209,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Omnicrow_Tests/Pods-Omnicrow_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Omnicrow/Omnicrow.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Omnicrow.framework",
 			);
@@ -343,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4BCD148D2C189E60628E0D5 /* Pods-Omnicrow_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 4PWC9KX3UT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -364,6 +364,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9FD037FBDDCAC7E009821F30 /* Pods-Omnicrow_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 4PWC9KX3UT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

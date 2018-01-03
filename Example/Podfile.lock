@@ -1,8 +1,10 @@
 PODS:
-  - Alamofire (4.5.1)
+  - Alamofire (4.6.0)
+  - Kingfisher (4.6.1)
   - ObjectMapper (2.1.0)
   - Omnicrow (0.1.0):
     - Alamofire (~> 4.4)
+    - Kingfisher (~> 4.6)
     - ObjectMapper (~> 2.1.0)
 
 DEPENDENCIES:
@@ -13,9 +15,10 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
   ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
-  Omnicrow: ff82d99c7435f17e43fc9563085decc06f5a6759
+  Omnicrow: bc128cc807f739794e6633b4456373232f6c8bde
 
 PODFILE CHECKSUM: fc12a214dc128c15ce229709ab41ddd43cbeecc1
 

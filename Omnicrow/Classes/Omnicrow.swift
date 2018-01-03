@@ -21,6 +21,9 @@ public class Omnicrow: NSObject {
     let beaconUUID = "8aa10000-0a46-115f-d94e-5a966a3ddbb7"
     let beaconId = "POI"
     
+    var baseUrl = "https://tubitak.mobillium.com"
+    var baseUrlForSandbox = "https://dev.tubitak.mobillium.com"
+    
     var appId: String!
     var isSandbox = false
     var userDefaults = UserDefaults(suiteName: "com.mobillium.omnicrow")
@@ -37,10 +40,17 @@ public class Omnicrow: NSObject {
         }
     }
     
+    public static func showPopUp(_ viewController: UIViewController) {
+        WebService.requestForPupup(WebService.Path.popup, parameters: ["platform":"ios"]) { (response: OmnicrowPopup) in
+            let dialog = NotificationPopup.init(response)
+            viewController.present(dialog, animated: true, completion: nil)
+        }
+    }
+    
     var version: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
-
+    
     public static func logEvent(_ eventName: OmnicrowEventName) {
         WebService.logEvent(eventName)
     }
@@ -61,11 +71,11 @@ public class Omnicrow: NSObject {
         defaults?.synchronize()
     }
     
-    public func active() {
+    public func active(_ baseUrl: String?, _ baseUrlForSandbox: String?) {
         if let appId = Bundle.main.object(forInfoDictionaryKey: "OmnicrowAppID") as? String {
             Omnicrow.shared.appId = appId
         } else {
-            fatalError("PaparaAppId should be set.")
+            fatalError("OmnicrowAppID should be set.")
         }
         
         if let isSandbox = Bundle.main.object(forInfoDictionaryKey: "OmnicrowSandbox") as? Bool, isSandbox {
@@ -84,6 +94,15 @@ public class Omnicrow: NSObject {
         }
     }
     
+    class func bundle() -> Bundle {
+        let bundle = Bundle(for: self)
+        if let bundleUrl = bundle.url(forResource: "Omnicrow", withExtension: "bundle") {
+            return Bundle(url: bundleUrl)!
+        } else {
+            return bundle
+        }
+        
+    }
 }
 
 extension Omnicrow: CLLocationManagerDelegate {
@@ -96,7 +115,7 @@ extension Omnicrow: CLLocationManagerDelegate {
             }
         }
     }
-
+    
     public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         if let beacon = beacons.first {
             if lastBeacon?.major != beacon.major || lastBeacon?.minor != beacon.minor {
